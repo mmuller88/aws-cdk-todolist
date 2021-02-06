@@ -24,6 +24,10 @@
       "type": "build"
     },
     {
+      "name": "aws-cdk-build-badge",
+      "type": "build"
+    },
+    {
       "name": "aws-cdk-staging-pipeline",
       "type": "build"
     },
@@ -95,12 +99,36 @@
       "type": "runtime"
     },
     {
+      "name": "@aws-cdk/aws-codepipeline-actions",
+      "version": "1.88.0",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-cdk/aws-codepipeline",
+      "version": "1.88.0",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-cdk/aws-lambda-nodejs",
+      "version": "1.88.0",
+      "type": "runtime"
+    },
+    {
       "name": "@aws-cdk/core",
       "version": "1.88.0",
       "type": "runtime"
     },
     {
+      "name": "@aws-cdk/pipelines",
+      "version": "1.88.0",
+      "type": "runtime"
+    },
+    {
       "name": "@mobileposse/auto-delete-bucket",
+      "type": "runtime"
+    },
+    {
+      "name": "aws-cdk-build-badge",
       "type": "runtime"
     },
     {
