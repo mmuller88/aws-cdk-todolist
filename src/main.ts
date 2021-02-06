@@ -23,11 +23,11 @@ new PipelineStack(app, 'todolist-pipeline', {
   repositoryName: 'aws-cdk-todolist',
   badges: { synthBadge: true },
   customStack: (scope, stageAccount) => {
-    const apiGwStack = new AppSyncStack(scope, `todolist-stack-${stageAccount.stage}`, {
+    const appSyncStack = new AppSyncStack(scope, `todolist-stack-${stageAccount.stage}`, {
       stackName: `todolist-stack-${stageAccount.stage}`,
       stage: stageAccount.stage,
     });
-    return apiGwStack;
+    return appSyncStack;
   },
   // all stages need manual approval
   manualApprovals: (stageAccount) => stageAccount.stage === 'prod',

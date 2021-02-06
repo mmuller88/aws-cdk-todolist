@@ -12,6 +12,7 @@ export class AppSyncStack extends CustomStack {
 
     new appsync.GraphqlApi(this, 'GraphQlApi', {
       name: 'TodoList',
+      schema: appsync.Schema.fromAsset('schema.graphql'),
     });
   }
 }
