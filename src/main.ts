@@ -5,7 +5,7 @@ import { AppSyncStack } from './appsync-stack';
 const app = new core.App();
 
 new PipelineStack(app, 'todolist-pipeline', {
-  stackName: 'petstore-pipeline',
+  stackName: 'todolist-pipeline',
   // Account and region where the pipeline will be build
   env: {
     account: '981237193288',
