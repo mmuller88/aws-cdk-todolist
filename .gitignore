@@ -17,6 +17,7 @@
 /lib
 /test-reports/
 build/Release
+cdk.out
 cdk.out/
 coverage
 jspm_packages/

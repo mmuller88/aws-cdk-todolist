@@ -1,6 +1,10 @@
 {
   "dependencies": [
     {
+      "name": "@mobileposse/auto-delete-bucket",
+      "type": "build"
+    },
+    {
       "name": "@types/jest",
       "type": "build"
     },
@@ -20,8 +24,12 @@
       "type": "build"
     },
     {
+      "name": "aws-cdk-staging-pipeline",
+      "type": "build"
+    },
+    {
       "name": "aws-cdk",
-      "version": "^1.88.0",
+      "version": "1.88.0",
       "type": "build"
     },
     {
@@ -78,12 +86,25 @@
     },
     {
       "name": "@aws-cdk/assert",
-      "version": "^1.88.0",
+      "version": "1.88.0",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-cdk/aws-appsync",
+      "version": "1.88.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/core",
-      "version": "^1.88.0",
+      "version": "1.88.0",
+      "type": "runtime"
+    },
+    {
+      "name": "@mobileposse/auto-delete-bucket",
+      "type": "runtime"
+    },
+    {
+      "name": "aws-cdk-staging-pipeline",
       "type": "runtime"
     }
   ],
