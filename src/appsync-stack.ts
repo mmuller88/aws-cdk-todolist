@@ -1,6 +1,6 @@
 import * as appsync from '@aws-cdk/aws-appsync';
-import * as core from '@aws-cdk/core';
 import * as db from '@aws-cdk/aws-dynamodb';
+import * as core from '@aws-cdk/core';
 import { CustomStack } from 'aws-cdk-staging-pipeline/lib/custom-stack';
 
 export interface AppSyncStackProps extends core.StackProps {
@@ -21,7 +21,7 @@ export class AppSyncStack extends CustomStack {
 
     const graphQlApi = new appsync.GraphqlApi(this, 'GraphQlApi', {
       name: 'TodoList',
-      schema: appsync.Schema.fromAsset('schema.graphql'),
+      schema: appsync.Schema.fromAsset('src/schema.graphql'),
     });
 
     const todoDS = graphQlApi.addDynamoDbDataSource('todoDataSource', todoTable);
