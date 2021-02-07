@@ -109,6 +109,11 @@
       "type": "runtime"
     },
     {
+      "name": "@aws-cdk/aws-dynamodb",
+      "version": "1.88.0",
+      "type": "runtime"
+    },
+    {
       "name": "@aws-cdk/aws-lambda-nodejs",
       "version": "1.88.0",
       "type": "runtime"
