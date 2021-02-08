@@ -21,6 +21,8 @@ const project = new AwsCdkTypeScriptApp({
     '@aws-cdk/pipelines',
     '@aws-cdk/aws-lambda-nodejs',
     '@aws-cdk/aws-dynamodb',
+    '@aws-cdk/aws-cognito',
+    '@aws-cdk/aws-iam',
   ],
   deps: deps,
   devDeps: deps,

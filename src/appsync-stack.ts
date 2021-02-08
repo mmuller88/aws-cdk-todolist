@@ -1,6 +1,9 @@
 import * as appsync from '@aws-cdk/aws-appsync';
+import * as cognito from '@aws-cdk/aws-cognito';
 import * as db from '@aws-cdk/aws-dynamodb';
+import * as iam from '@aws-cdk/aws-iam';
 import * as core from '@aws-cdk/core';
+
 import { CustomStack } from 'aws-cdk-staging-pipeline/lib/custom-stack';
 
 export interface AppSyncStackProps extends core.StackProps {
@@ -10,6 +13,59 @@ export interface AppSyncStackProps extends core.StackProps {
 export class AppSyncStack extends CustomStack {
   constructor(scope: core.Construct, id: string, props: AppSyncStackProps) {
     super(scope, id, props);
+
+    const userPool = new cognito.UserPool(this, 'demo-user-pool', {
+      selfSignUpEnabled: true,
+      autoVerify: {
+        email: true,
+      },
+      standardAttributes: {
+        email: {
+          mutable: true,
+          required: true,
+        },
+        phoneNumber: {
+          mutable: true,
+          required: true,
+        },
+      },
+      signInAliases: {
+        username: true,
+      },
+    });
+
+    const userPoolClient = new cognito.UserPoolClient(this, 'demo-user-pool-client', {
+      userPool,
+      generateSecret: false,
+    });
+
+    const identityPool = new cognito.CfnIdentityPool(this, id, {
+      identityPoolName: 'demo-identity-pool',
+      cognitoIdentityProviders: [
+        {
+          clientId: userPoolClient.userPoolClientId,
+          providerName: `cognito-idp.${this.region}.amazonaws.com/${userPool.userPoolId}`,
+        },
+      ],
+      allowUnauthenticatedIdentities: true,
+    });
+
+    const unAuthPrincipal = new iam.WebIdentityPrincipal('cognito-identity.amazonaws.com')
+      .withConditions({
+        'StringEquals': { 'cognito-identity.amazonaws.com:aud': `${identityPool.ref}` },
+        'ForAnyValue:StringLike': { 'cognito-identity.amazonaws.com:amr': 'unauthenticated' },
+      });
+
+    const unauthRole = new iam.Role(this, 'demo-identity-unauth-role', {
+      assumedBy: unAuthPrincipal,
+    });
+
+    new cognito.CfnIdentityPoolRoleAttachment(this, `${id}-role-map`, {
+      identityPoolId: identityPool.ref,
+      roles: {
+        unauthenticated: unauthRole.roleArn,
+      },
+    });
 
     const todoTable = new db.Table(this, 'TodoTable', {
       removalPolicy: core.RemovalPolicy.DESTROY,
