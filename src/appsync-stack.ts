@@ -102,5 +102,25 @@ export class AppSyncStack extends CustomStack {
       requestMappingTemplate: appsync.MappingTemplate.dynamoDbDeleteItem('id', 'id'),
       responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultItem(),
     });
+
+    // Outputs
+    new core.CfnOutput(this, 'awsUserPoolId', {
+      description: 'userPoolID value for amplify exports',
+      value: userPool.userPoolId,
+    });
+
+    new core.CfnOutput(this, 'awsUserPoolWebClientId', {
+      description: 'userPoolClientID value for amplify exports',
+      value: userPoolClient.userPoolClientId,
+    });
+
+    new core.CfnOutput(this, 'awsIdentityPoolId', {
+      description: 'identityPoolID value for amplify exports',
+      value: identityPool.ref,
+    });
+
+    new core.CfnOutput(this, 'awsAppsyncAuthenticationType', {
+      value: appsync.AuthorizationType.IAM,
+    });
   }
 }
