@@ -1,15 +1,17 @@
-const { AwsCdkTypeScriptApp } = require('projen');
+const { AwsCdkTypeScriptApp, NodePackageManager } = require('projen');
 
 const deps = [
   '@mobileposse/auto-delete-bucket',
   'aws-cdk-staging-pipeline',
   'aws-cdk-build-badge',
+  'cdk-appsync-transformer',
 ];
 
 const project = new AwsCdkTypeScriptApp({
   authorAddress: 'damadden88@googlemail.de',
   authorName: 'martin.mueller',
-  cdkVersion: '1.88.0',
+  packageManager: NodePackageManager.NPM,
+  cdkVersion: '1.79.0',
   cdkVersionPinning: true,
   defaultReleaseBranch: 'main',
   jsiiFqn: 'projen.AwsCdkTypeScriptApp',

@@ -33,7 +33,11 @@
     },
     {
       "name": "aws-cdk",
-      "version": "1.88.0",
+      "version": "1.79.0",
+      "type": "build"
+    },
+    {
+      "name": "cdk-appsync-transformer",
       "type": "build"
     },
     {
@@ -90,52 +94,52 @@
     },
     {
       "name": "@aws-cdk/assert",
-      "version": "1.88.0",
+      "version": "1.79.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-appsync",
-      "version": "1.88.0",
+      "version": "1.79.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-codepipeline-actions",
-      "version": "1.88.0",
+      "version": "1.79.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-codepipeline",
-      "version": "1.88.0",
+      "version": "1.79.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-cognito",
-      "version": "1.88.0",
+      "version": "1.79.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-dynamodb",
-      "version": "1.88.0",
+      "version": "1.79.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-iam",
-      "version": "1.88.0",
+      "version": "1.79.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-lambda-nodejs",
-      "version": "1.88.0",
+      "version": "1.79.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/core",
-      "version": "1.88.0",
+      "version": "1.79.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/pipelines",
-      "version": "1.88.0",
+      "version": "1.79.0",
       "type": "runtime"
     },
     {
@@ -148,6 +152,10 @@
     },
     {
       "name": "aws-cdk-staging-pipeline",
+      "type": "runtime"
+    },
+    {
+      "name": "cdk-appsync-transformer",
       "type": "runtime"
     }
   ],
