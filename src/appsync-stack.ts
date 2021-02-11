@@ -1,10 +1,10 @@
 import * as appsync from '@aws-cdk/aws-appsync';
 import * as cognito from '@aws-cdk/aws-cognito';
-// import * as db from '@aws-cdk/aws-dynamodb';
+import * as db from '@aws-cdk/aws-dynamodb';
 import * as iam from '@aws-cdk/aws-iam';
 import * as core from '@aws-cdk/core';
 import { CustomStack } from 'aws-cdk-staging-pipeline/lib/custom-stack';
-import { AppSyncTransformer } from 'cdk-appsync-transformer';
+// import { AppSyncTransformer } from 'cdk-appsync-transformer';
 
 
 export interface AppSyncStackProps extends core.StackProps {
@@ -68,37 +68,37 @@ export class AppSyncStack extends CustomStack {
       },
     });
 
-    // const todoTable = new db.Table(this, 'TodoTable', {
-    //   removalPolicy: core.RemovalPolicy.DESTROY,
-    //   partitionKey: {
-    //     name: 'id',
-    //     type: db.AttributeType.STRING,
-    //   },
-    // });
-
-    // const graphQlApi = new appsync.GraphqlApi(this, 'GraphQlApi', {
-    //   name: 'TodoList',
-    //   schema: appsync.Schema.fromAsset('schema.graphql'),
-    // });
-
-    const appSyncTransformer = new AppSyncTransformer(this, 'GraphQlApi', {
-      schemaPath: './schema.graphql',
-      apiName: 'demo-appsync-api',
-      authorizationConfig: {
-        defaultAuthorization: {
-          authorizationType: appsync.AuthorizationType.USER_POOL,
-          userPoolConfig: {
-            userPool,
-            defaultAction: appsync.UserPoolDefaultAction.ALLOW,
-          },
-        },
-        additionalAuthorizationModes: [
-          {
-            authorizationType: appsync.AuthorizationType.IAM,
-          },
-        ],
+    const todoTable = new db.Table(this, 'TodoTable', {
+      removalPolicy: core.RemovalPolicy.DESTROY,
+      partitionKey: {
+        name: 'id',
+        type: db.AttributeType.STRING,
       },
     });
+
+    const graphQlApi = new appsync.GraphqlApi(this, 'GraphQlApi', {
+      name: 'TodoList',
+      schema: appsync.Schema.fromAsset('schema.graphql'),
+    });
+
+    // const appSyncTransformer = new AppSyncTransformer(this, 'GraphQlApi', {
+    //   schemaPath: './schema.graphql',
+    //   apiName: 'demo-appsync-api',
+    //   authorizationConfig: {
+    //     defaultAuthorization: {
+    //       authorizationType: appsync.AuthorizationType.USER_POOL,
+    //       userPoolConfig: {
+    //         userPool,
+    //         defaultAction: appsync.UserPoolDefaultAction.ALLOW,
+    //       },
+    //     },
+    //     additionalAuthorizationModes: [
+    //       {
+    //         authorizationType: appsync.AuthorizationType.IAM,
+    //       },
+    //     ],
+    //   },
+    // });
 
     // Add allowed queries to the unauthorized identity pool role
     unauthRole.addToPolicy(
@@ -109,41 +109,40 @@ export class AppSyncStack extends CustomStack {
         ],
         resources: [
           // Queries
-          `arn:aws:appsync:${this.region}:${this.account}:apis/${appSyncTransformer.appsyncAPI.apiId}/types/Query/fields/listPosts`,
-          `arn:aws:appsync:${this.region}:${this.account}:apis/${appSyncTransformer.appsyncAPI.apiId}/types/Query/fields/getPost`,
+          `arn:aws:appsync:${this.region}:${this.account}:apis/${graphQlApi.apiId}/types/Query/fields/listPosts`,
+          `arn:aws:appsync:${this.region}:${this.account}:apis/${graphQlApi.apiId}/types/Query/fields/getPost`,
         ],
       }),
     );
 
-    // const todoDS = appSyncTransformer.appsyncAPI.addDynamoDbDataSource('todoDataSource', todoTable);
-    // const todoDS = graphQlApi.addDynamoDbDataSource('todoDataSource', todoTable);
+    const todoDS = graphQlApi.addDynamoDbDataSource('todoDataSource', todoTable);
 
-    // todoDS.createResolver({
-    //   typeName: 'Query',
-    //   fieldName: 'todoList',
-    //   requestMappingTemplate: appsync.MappingTemplate.dynamoDbScanTable(),
-    //   responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultList(),
-    // });
+    todoDS.createResolver({
+      typeName: 'Query',
+      fieldName: 'todoList',
+      requestMappingTemplate: appsync.MappingTemplate.dynamoDbScanTable(),
+      responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultList(),
+    });
 
-    // todoDS.createResolver({
-    //   typeName: 'Mutation',
-    //   fieldName: 'todoAdd',
-    //   requestMappingTemplate: appsync.MappingTemplate.dynamoDbPutItem(appsync.PrimaryKey.partition('id').auto(), appsync.Values.attribute('body').is('$ctx.args.todoItem')),
-    //   responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultItem(),
-    // });
+    todoDS.createResolver({
+      typeName: 'Mutation',
+      fieldName: 'todoAdd',
+      requestMappingTemplate: appsync.MappingTemplate.dynamoDbPutItem(appsync.PrimaryKey.partition('id').auto(), appsync.Values.attribute('body').is('$ctx.args.todoItem')),
+      responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultItem(),
+    });
 
-    // todoDS.createResolver({
-    //   typeName: 'Mutation',
-    //   fieldName: 'todoRemove',
-    //   requestMappingTemplate: appsync.MappingTemplate.dynamoDbDeleteItem('id', 'id'),
-    //   responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultItem(),
-    // });
+    todoDS.createResolver({
+      typeName: 'Mutation',
+      fieldName: 'todoRemove',
+      requestMappingTemplate: appsync.MappingTemplate.dynamoDbDeleteItem('id', 'id'),
+      responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultItem(),
+    });
 
     // Outputs
-    // new core.CfnOutput(this, 'appsyncGraphQLEndpointOutput', {
-    //   description: 'GraphQL Endpoint',
-    //   value: appSyncTransformer.appsyncAPI.graphqlUrl,
-    // });
+    new core.CfnOutput(this, 'appsyncGraphQLEndpointOutput', {
+      description: 'GraphQL Endpoint',
+      value: graphQlApi.graphqlUrl,
+    });
 
     new core.CfnOutput(this, 'awsUserPoolId', {
       description: 'userPoolID value for amplify exports',

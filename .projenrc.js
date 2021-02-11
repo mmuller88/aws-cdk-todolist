@@ -4,14 +4,15 @@ const deps = [
   '@mobileposse/auto-delete-bucket',
   'aws-cdk-staging-pipeline',
   'aws-cdk-build-badge',
-  'cdk-appsync-transformer',
+  // 'cdk-appsync-transformer',
 ];
 
 const project = new AwsCdkTypeScriptApp({
   authorAddress: 'damadden88@googlemail.de',
   authorName: 'martin.mueller',
-  packageManager: NodePackageManager.NPM,
-  cdkVersion: '1.79.0',
+  // packageManager: NodePackageManager.NPM,
+  // cdkVersion: '1.79.0',
+  cdkVersion: '1.88.0',
   cdkVersionPinning: true,
   defaultReleaseBranch: 'main',
   jsiiFqn: 'projen.AwsCdkTypeScriptApp',
