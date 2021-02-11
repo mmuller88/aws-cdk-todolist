@@ -9,7 +9,7 @@ type Query {
 }
 
 type Mutation {
-  todoAdd(todoItem: String!): todoItem
+  todoAdd(body: String!, username: String!): todoItem
   todoRemove(id: String!): todoItem
 }
 

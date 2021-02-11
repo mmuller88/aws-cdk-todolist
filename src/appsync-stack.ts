@@ -141,7 +141,7 @@ export class AppSyncStack extends CustomStack {
     todoDS.createResolver({
       typeName: 'Mutation',
       fieldName: 'todoAdd',
-      requestMappingTemplate: appsync.MappingTemplate.dynamoDbPutItem(appsync.PrimaryKey.partition('id').auto(), appsync.Values.attribute('body').is('$ctx.args.todoItem')),
+      requestMappingTemplate: appsync.MappingTemplate.dynamoDbPutItem(appsync.PrimaryKey.partition('id').auto(), appsync.Values.attribute('body').is('$ctx.args.body').attribute('username').is('$ctx.args.username')),
       responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultItem(),
     });
 
