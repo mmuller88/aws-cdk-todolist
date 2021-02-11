@@ -81,8 +81,17 @@ export class AppSyncStack extends CustomStack {
       schema: appsync.Schema.fromAsset('schema.graphql'),
       authorizationConfig: {
         defaultAuthorization: {
-          authorizationType: appsync.AuthorizationType.IAM,
+          authorizationType: appsync.AuthorizationType.USER_POOL,
+          userPoolConfig: {
+            userPool: userPool,
+            defaultAction: appsync.UserPoolDefaultAction.ALLOW,
+          },
         },
+        additionalAuthorizationModes: [
+          {
+            authorizationType: appsync.AuthorizationType.IAM,
+          },
+        ],
       },
     });
 
