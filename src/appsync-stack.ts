@@ -79,6 +79,11 @@ export class AppSyncStack extends CustomStack {
     const graphQlApi = new appsync.GraphqlApi(this, 'GraphQlApi', {
       name: 'TodoList',
       schema: appsync.Schema.fromAsset('schema.graphql'),
+      authorizationConfig: {
+        defaultAuthorization: {
+          authorizationType: appsync.AuthorizationType.IAM,
+        },
+      },
     });
 
     // const appSyncTransformer = new AppSyncTransformer(this, 'GraphQlApi', {
