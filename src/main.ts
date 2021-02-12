@@ -21,7 +21,7 @@ new PipelineStack(app, 'todolist-pipeline', {
   }],
   branch: 'main',
   repositoryName: 'aws-cdk-todolist',
-  badges: { synthBadge: false },
+  badges: { synthBadge: true },
   // installCommand: 'npm ci',
   customStack: (scope, stageAccount) => {
     const appSyncStack = new AppSyncStack(scope, `todolist-stack-${stageAccount.stage}`, {
