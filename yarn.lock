@@ -1881,9 +1881,9 @@ aws-cdk-build-badge@*:
     esbuild "^0"
 
 aws-cdk-staging-pipeline@*:
-  version "1.88.3"
-  resolved "https://registry.yarnpkg.com/aws-cdk-staging-pipeline/-/aws-cdk-staging-pipeline-1.88.3.tgz#d70c626826d01eaaa769276dcaaf7a60dfca4e87"
-  integrity sha512-ylCZC0Ffx6CT6sntx4Tw634S9xlDipE2X7/k3MKNTODekdYVVitFc8XIQuIlBorFay8mC7eSpqXujde4KQHi2g==
+  version "1.88.4"
+  resolved "https://registry.yarnpkg.com/aws-cdk-staging-pipeline/-/aws-cdk-staging-pipeline-1.88.4.tgz#403755f25d5d6f0e059c36396971c62c2b4885da"
+  integrity sha512-rrBdGDiHFnbD6per/0qGll7UJagwmdOxPY4m8UM9SD+Ls6LH0H++lUYjg+YGJ9rbGwsGn1gUwY2vNSoEE9POxA==
 
 aws-cdk@1.88.0:
   version "1.88.0"
