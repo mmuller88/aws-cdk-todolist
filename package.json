@@ -34,8 +34,8 @@
     "@typescript-eslint/parser": "^4.3.0",
     "aws-cdk": "1.88.0",
     "aws-cdk-build-badge": "^0.0.8",
-    "aws-cdk-staging-pipeline": "^1.88.5",
-    "eslint": "^7.19.0",
+    "aws-cdk-staging-pipeline": "^1.88.6",
+    "eslint": "^7.20.0",
     "eslint-import-resolver-node": "^0.3.4",
     "eslint-import-resolver-typescript": "^2.3.0",
     "eslint-plugin-import": "^2.22.1",
@@ -61,7 +61,7 @@
     "@aws-cdk/pipelines": "1.88.0",
     "@mobileposse/auto-delete-bucket": "^1.55.0",
     "aws-cdk-build-badge": "^0.0.8",
-    "aws-cdk-staging-pipeline": "^1.88.5"
+    "aws-cdk-staging-pipeline": "^1.88.6"
   },
   "bundledDependencies": [],
   "keywords": [
