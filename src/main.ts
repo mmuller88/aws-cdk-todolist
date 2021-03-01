@@ -27,8 +27,6 @@ new PipelineStack(app, 'todolist-pipeline', {
   }],
   branch: 'main',
   repositoryName: 'aws-cdk-todolist',
-  badges: { synthBadge: true },
-  // installCommand: 'npm ci',
   customStack: (scope, stageAccount) => {
     const appSyncStack = new AppSyncStack(scope, `todolist-stack-${stageAccount.stage}`, {
       stackName: `todolist-stack-${stageAccount.stage}`,
@@ -38,10 +36,12 @@ new PipelineStack(app, 'todolist-pipeline', {
   },
   // all stages need manual approval
   manualApprovals: (stageAccount) => stageAccount.stage === 'prod',
-  // not much test magic here yet. Will soon setup some Postman integration tests Check the property for instructions!
+  // We test if the graphql endpoint exist and gives us back a 401 because we are not authenticated
   testCommands: (stageAccount) => [
     `echo "${stageAccount.stage} stage"`,
-    `echo ${stageAccount.account.id} id + ${stageAccount.account.region} region`,
+    'STATUSCODE=$(curl --silent --output /dev/stderr --write-out "%{http_code}" $appsyncGraphQLEndpointOutput)',
+    'echo Statuscode = $STATUSCODE',
+    'if test $STATUSCODE -ne 401; then exit 1; fi',
   ],
   gitHub: {
     owner: 'mmuller88',
@@ -50,7 +50,5 @@ new PipelineStack(app, 'todolist-pipeline', {
     }),
   },
 });
-
-// new BuildBadge(stack, 'BuildBadge', { hideAccountID: 'no' });
 
 app.synth();

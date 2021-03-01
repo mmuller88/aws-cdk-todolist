@@ -95,25 +95,6 @@ export class AppSyncStack extends CustomStack {
       },
     });
 
-    // const appSyncTransformer = new AppSyncTransformer(this, 'GraphQlApi', {
-    //   schemaPath: './schema.graphql',
-    //   apiName: 'demo-appsync-api',
-    //   authorizationConfig: {
-    //     defaultAuthorization: {
-    //       authorizationType: appsync.AuthorizationType.USER_POOL,
-    //       userPoolConfig: {
-    //         userPool,
-    //         defaultAction: appsync.UserPoolDefaultAction.ALLOW,
-    //       },
-    //     },
-    //     additionalAuthorizationModes: [
-    //       {
-    //         authorizationType: appsync.AuthorizationType.IAM,
-    //       },
-    //     ],
-    //   },
-    // });
-
     // Add allowed queries to the unauthorized identity pool role
     unauthRole.addToPolicy(
       new iam.PolicyStatement({
@@ -153,10 +134,11 @@ export class AppSyncStack extends CustomStack {
     });
 
     // Outputs
-    new core.CfnOutput(this, 'appsyncGraphQLEndpointOutput', {
+    const graphql = new core.CfnOutput(this, 'appsyncGraphQLEndpointOutput', {
       description: 'GraphQL Endpoint',
       value: graphQlApi.graphqlUrl,
     });
+    this.cfnOutputs.appsyncGraphQLEndpointOutput = graphql;
 
     new core.CfnOutput(this, 'awsUserPoolId', {
       description: 'userPoolID value for amplify exports',
