@@ -134,10 +134,11 @@ export class AppSyncStack extends CustomStack {
     });
 
     // Outputs
-    new core.CfnOutput(this, 'appsyncGraphQLEndpointOutput', {
+    const graphql = new core.CfnOutput(this, 'appsyncGraphQLEndpointOutput', {
       description: 'GraphQL Endpoint',
       value: graphQlApi.graphqlUrl,
     });
+    this.cfnOutputs.appsyncGraphQLEndpointOutput = graphql;
 
     new core.CfnOutput(this, 'awsUserPoolId', {
       description: 'userPoolID value for amplify exports',
