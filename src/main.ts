@@ -36,11 +36,12 @@ new PipelineStack(app, 'todolist-pipeline', {
   },
   // all stages need manual approval
   manualApprovals: (stageAccount) => stageAccount.stage === 'prod',
-  // not much test magic here yet. Will soon setup some Postman integration tests Check the property for instructions!
+  // We test if the graphql endpoint exist and gives us back a 401 because we are not authenticated
   testCommands: (stageAccount) => [
     `echo "${stageAccount.stage} stage"`,
     'URL=$appsyncGraphQLEndpointOutput',
     'STATUSCODE=$(curl --silent --output /dev/stderr --write-out "%{http_code}" URL)',
+    'echo Statuscode = $STATUSCODE',
     'if test $STATUSCODE -ne 401; then exit 1 fi',
   ],
   gitHub: {
