@@ -95,25 +95,6 @@ export class AppSyncStack extends CustomStack {
       },
     });
 
-    // const appSyncTransformer = new AppSyncTransformer(this, 'GraphQlApi', {
-    //   schemaPath: './schema.graphql',
-    //   apiName: 'demo-appsync-api',
-    //   authorizationConfig: {
-    //     defaultAuthorization: {
-    //       authorizationType: appsync.AuthorizationType.USER_POOL,
-    //       userPoolConfig: {
-    //         userPool,
-    //         defaultAction: appsync.UserPoolDefaultAction.ALLOW,
-    //       },
-    //     },
-    //     additionalAuthorizationModes: [
-    //       {
-    //         authorizationType: appsync.AuthorizationType.IAM,
-    //       },
-    //     ],
-    //   },
-    // });
-
     // Add allowed queries to the unauthorized identity pool role
     unauthRole.addToPolicy(
       new iam.PolicyStatement({
