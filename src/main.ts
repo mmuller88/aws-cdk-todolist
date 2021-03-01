@@ -41,7 +41,7 @@ new PipelineStack(app, 'todolist-pipeline', {
     `echo "${stageAccount.stage} stage"`,
     'STATUSCODE=$(curl --silent --output /dev/stderr --write-out "%{http_code}" $appsyncGraphQLEndpointOutput)',
     'echo Statuscode = $STATUSCODE',
-    // 'if test $STATUSCODE -ne 401; then exit 1 fi',
+    'if test $STATUSCODE -ne 401; then exit 1 fi',
   ],
   gitHub: {
     owner: 'mmuller88',
