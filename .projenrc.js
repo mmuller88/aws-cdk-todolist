@@ -12,7 +12,7 @@ const project = new AwsCdkTypeScriptApp({
   authorName: 'martin.mueller',
   // packageManager: NodePackageManager.NPM,
   // cdkVersion: '1.79.0',
-  cdkVersion: '1.88.0',
+  cdkVersion: '1.92.0',
   cdkVersionPinning: true,
   defaultReleaseBranch: 'main',
   jsiiFqn: 'projen.AwsCdkTypeScriptApp',
@@ -47,8 +47,8 @@ const project = new AwsCdkTypeScriptApp({
 project.setScript('cdkDeploy', 'cdk deploy');
 project.setScript('cdkDestroy', 'cdk destroy');
 
-const common_exclude = ['cdk.out'];
-project.npmignore.exclude(...common_exclude);
-project.gitignore.exclude(...common_exclude);
+// const common_exclude = ['cdk.out'];
+// project.npmignore.exclude(...common_exclude);
+// project.gitignore.exclude(...common_exclude);
 
 project.synth();
