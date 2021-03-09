@@ -1,17 +1,8 @@
 const { AwsCdkTypeScriptApp, NodePackageManager } = require('projen');
 
-const deps = [
-  '@mobileposse/auto-delete-bucket',
-  'aws-cdk-staging-pipeline',
-  'aws-cdk-build-badge',
-  // 'cdk-appsync-transformer',
-];
-
 const project = new AwsCdkTypeScriptApp({
   authorAddress: 'damadden88@googlemail.de',
   authorName: 'martin.mueller',
-  // packageManager: NodePackageManager.NPM,
-  // cdkVersion: '1.79.0',
   cdkVersion: '1.92.0',
   cdkVersionPinning: true,
   defaultReleaseBranch: 'main',
@@ -27,8 +18,9 @@ const project = new AwsCdkTypeScriptApp({
     '@aws-cdk/aws-cognito',
     '@aws-cdk/aws-iam',
   ],
-  deps: deps,
-  devDeps: deps,
+  deps: [
+    'aws-cdk-staging-pipeline',
+  ],
   context: {
     '@aws-cdk/core:enableStackNameDuplicates': true,
     'aws-cdk:enableDiffNoFail': true,
@@ -46,9 +38,5 @@ const project = new AwsCdkTypeScriptApp({
 
 project.setScript('cdkDeploy', 'cdk deploy');
 project.setScript('cdkDestroy', 'cdk destroy');
-
-// const common_exclude = ['cdk.out'];
-// project.npmignore.exclude(...common_exclude);
-// project.gitignore.exclude(...common_exclude);
 
 project.synth();
