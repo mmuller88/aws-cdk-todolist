@@ -25,7 +25,7 @@ new PipelineStack(app, 'todolist-pipeline', {
     },
     stage: 'prod',
   }],
-  branch: 'main',
+  branch: 'test-start',
   repositoryName: 'aws-cdk-todolist',
   customStack: (scope, stageAccount) => {
     const appSyncStack = new AppSyncStack(scope, `todolist-stack-${stageAccount.stage}`, {
