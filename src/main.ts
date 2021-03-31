@@ -34,6 +34,12 @@ new PipelineStack(app, 'todolist-pipeline', {
     });
     return appSyncStack;
   },
+  testCommands: (stageAccount) => [
+    `echo "${stageAccount.stage} stage"`,
+    'STATUSCODE=$(curl --silent --output /dev/stderr --write-out "%{http_code}" $appsyncGraphQLEndpointOutput)',
+    'echo Statuscode = $STATUSCODE',
+    'if test $STATUSCODE -ne 401; then exit 1; fi',
+  ],
   // all stages need manual approval
   manualApprovals: (stageAccount) => stageAccount.stage === 'prod',
   gitHub: {
