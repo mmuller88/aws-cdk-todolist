@@ -1,4 +1,4 @@
-const { AwsCdkTypeScriptApp, NodePackageManager } = require('projen');
+const { AwsCdkTypeScriptApp } = require('projen');
 
 const project = new AwsCdkTypeScriptApp({
   authorAddress: 'damadden88@googlemail.de',
@@ -12,7 +12,6 @@ const project = new AwsCdkTypeScriptApp({
     '@aws-cdk/aws-codepipeline',
     '@aws-cdk/aws-codepipeline-actions',
     '@aws-cdk/pipelines',
-    '@aws-cdk/aws-lambda-nodejs',
     '@aws-cdk/aws-dynamodb',
     '@aws-cdk/aws-cognito',
     '@aws-cdk/aws-iam',
@@ -34,8 +33,5 @@ const project = new AwsCdkTypeScriptApp({
     'graphql',
   ],
 });
-
-project.setScript('cdkDeploy', 'cdk deploy');
-project.setScript('cdkDestroy', 'cdk destroy');
 
 project.synth();

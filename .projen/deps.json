@@ -109,11 +109,6 @@
       "type": "runtime"
     },
     {
-      "name": "@aws-cdk/aws-lambda-nodejs",
-      "version": "^1.93.0",
-      "type": "runtime"
-    },
-    {
       "name": "@aws-cdk/core",
       "version": "^1.93.0",
       "type": "runtime"

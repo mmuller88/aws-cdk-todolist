@@ -3,8 +3,6 @@
   "scripts": {
     "projen": "npx projen",
     "start": "npx projen start",
-    "cdkDeploy": "cdk deploy",
-    "cdkDestroy": "cdk destroy",
     "clobber": "npx projen clobber",
     "compile": "npx projen compile",
     "test:compile": "npx projen test:compile",
@@ -53,7 +51,6 @@
     "@aws-cdk/aws-cognito": "^1.93.0",
     "@aws-cdk/aws-dynamodb": "^1.93.0",
     "@aws-cdk/aws-iam": "^1.93.0",
-    "@aws-cdk/aws-lambda-nodejs": "^1.93.0",
     "@aws-cdk/core": "^1.93.0",
     "@aws-cdk/pipelines": "^1.93.0",
     "aws-cdk-staging-pipeline": "^1.92.1"
