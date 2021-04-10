@@ -13,6 +13,12 @@ const project = new AwsCdkTypeScriptApp({
     '@aws-cdk/aws-cognito',
     '@aws-cdk/aws-iam',
   ],
+  context: {
+    '@aws-cdk/core:enableStackNameDuplicates': true,
+    'aws-cdk:enableDiffNoFail': true,
+    '@aws-cdk/core:stackRelativeExports': true,
+    '@aws-cdk/core:newStyleStackSynthesis': true,
+  },
   keywords: [
     'cdk',
     'aws',
