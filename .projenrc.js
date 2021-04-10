@@ -26,13 +26,6 @@ const project = new AwsCdkTypeScriptApp({
     '@aws-cdk/core:stackRelativeExports': true,
     '@aws-cdk/core:newStyleStackSynthesis': true,
   },
-  keywords: [
-    'cdk',
-    'aws',
-    'todolist',
-    'appsync',
-    'graphql',
-  ],
 });
 
 project.synth();
