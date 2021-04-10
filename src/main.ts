@@ -1,17 +1,22 @@
-import { App } from '@aws-cdk/core';
-import { AppSyncStack } from './appsync-stack';
+import { App, Construct, Stack, StackProps } from '@aws-cdk/core';
+
+export class MyStack extends Stack {
+  constructor(scope: Construct, id: string, props: StackProps = {}) {
+    super(scope, id, props);
+
+    // define resources here...
+  }
+}
 
 // for development, use account/region from cdk cli
 const devEnv = {
-  account: '981237193288',
-  region: 'eu-central-1',
+  account: process.env.CDK_DEFAULT_ACCOUNT,
+  region: process.env.CDK_DEFAULT_REGION,
 };
 
 const app = new App();
 
-new AppSyncStack(app, 'appsync-stack-dev', {
-  env: devEnv,
-  stage: 'dev',
-});
+new MyStack(app, 'my-stack-dev', { env: devEnv });
+// new MyStack(app, 'my-stack-prod', { env: prodEnv });
 
 app.synth();

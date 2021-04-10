@@ -79,26 +79,6 @@
       "type": "runtime"
     },
     {
-      "name": "@aws-cdk/aws-appsync",
-      "version": "^1.93.0",
-      "type": "runtime"
-    },
-    {
-      "name": "@aws-cdk/aws-cognito",
-      "version": "^1.93.0",
-      "type": "runtime"
-    },
-    {
-      "name": "@aws-cdk/aws-dynamodb",
-      "version": "^1.93.0",
-      "type": "runtime"
-    },
-    {
-      "name": "@aws-cdk/aws-iam",
-      "version": "^1.93.0",
-      "type": "runtime"
-    },
-    {
       "name": "@aws-cdk/core",
       "version": "^1.93.0",
       "type": "runtime"
