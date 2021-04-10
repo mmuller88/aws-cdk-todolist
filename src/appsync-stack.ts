@@ -4,7 +4,6 @@ import * as db from '@aws-cdk/aws-dynamodb';
 import * as iam from '@aws-cdk/aws-iam';
 import * as core from '@aws-cdk/core';
 import { CustomStack } from 'aws-cdk-staging-pipeline/lib/custom-stack';
-// import { AppSyncTransformer } from 'cdk-appsync-transformer';
 
 
 export interface AppSyncStackProps extends core.StackProps {
