@@ -55,13 +55,6 @@
     "aws-cdk-staging-pipeline": "^1.92.1"
   },
   "bundledDependencies": [],
-  "keywords": [
-    "appsync",
-    "aws",
-    "cdk",
-    "graphql",
-    "todolist"
-  ],
   "license": "Apache-2.0",
   "version": "0.0.0",
   "jest": {
