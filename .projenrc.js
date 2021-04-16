@@ -13,6 +13,9 @@ const project = new AwsCdkTypeScriptApp({
     '@aws-cdk/aws-cognito',
     '@aws-cdk/aws-iam',
   ],
+  deps: [
+    'aws-cdk-staging-pipeline',
+  ],
   context: {
     '@aws-cdk/core:enableStackNameDuplicates': true,
     'aws-cdk:enableDiffNoFail': true,
