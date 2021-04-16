@@ -12,9 +12,6 @@ const project = new AwsCdkTypeScriptApp({
     '@aws-cdk/aws-dynamodb',
     '@aws-cdk/aws-cognito',
     '@aws-cdk/aws-iam',
-    '@aws-cdk/aws-codepipeline',
-    '@aws-cdk/aws-codepipeline-actions',
-    '@aws-cdk/pipelines',
   ],
   deps: [
     'aws-cdk-staging-pipeline',
