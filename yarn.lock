@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@aws-cdk/assert@^1.93.0":
+"@aws-cdk/assert@1.93.0":
   version "1.93.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/assert/-/assert-1.93.0.tgz#f2e37e437c9636899f69c0da1959273540beb913"
   integrity sha512-yiQPc+gNjUSGg0VgTK55uzyP4QZdYhGZVhIxF2Imlr3FhTb8uYybYSzx+yhrYhxPnUmnP3BN/0rJexn4gR6iow==
@@ -40,7 +40,7 @@
     string-width "^4.2.2"
     table "^6.0.7"
 
-"@aws-cdk/core@1.93.0", "@aws-cdk/core@^1.93.0":
+"@aws-cdk/core@1.93.0":
   version "1.93.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/core/-/core-1.93.0.tgz#cb3f01a6cf3124f248e9f60d5dc085dfb874f267"
   integrity sha512-Z/1IZJJBfurswUKKMxoVbS0hJGIdVaTYlMCcSsYIlEVgv4D+4YfkRnWsp99IscUr1zvs+FTfM/K1ykXb8u2gaQ==
@@ -1128,7 +1128,7 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-aws-cdk@^1.93.0:
+aws-cdk@1.93.0:
   version "1.93.0"
   resolved "https://registry.yarnpkg.com/aws-cdk/-/aws-cdk-1.93.0.tgz#6b2a644b76d35cc5eadaab5cfe5583cac02e34b3"
   integrity sha512-/nu/42rVYK06j/w2uoxLc4zCbpdyWBuAXLXj74UyilHakoKDCyvAA6LCiAOlLP8BrpFyd/tbdB3aRue8qCEb1A==
@@ -3156,6 +3156,11 @@ ini@^1.3.2:
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.8.tgz#a29da425b48806f34767a4efce397269af28432c"
   integrity sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==
 
+ini@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ini/-/ini-2.0.0.tgz#e5fd556ecdd5726be978fa1001862eacb0a94bc5"
+  integrity sha512-7PnF4oN3CvZF23ADhA5wRaYEQpJ8qygSkbtTXWBeXWXmEVRXK+1ITciHWwHhsjv1TmW0MgacIv6hEi5pX5NQdA==
+
 inquirer@^7.3.3:
   version "7.3.3"
   resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-7.3.3.tgz#04d176b2af04afc157a83fd7c100e98ee0aad003"
@@ -4952,16 +4957,17 @@ progress@^2.0.0:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.16.42:
-  version "0.16.42"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.16.42.tgz#821f2087f841a5b63aa2e25c724c16b3ae0c6c3a"
-  integrity sha512-mOc4wz8jrmnu3eP7CzCmPO1LU39dec/cCZwDBaif+j72/daKg49uoXtVkMh0wyMMwydSqeYp9om2cnYsbVaJVA==
+projen@^0.17.44:
+  version "0.17.44"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.17.44.tgz#b1917ac8a5116d4a59dbfbf3b787a82530dc02b4"
+  integrity sha512-8nFtkzRF4rPzZXVcSEbNxbz7H4fVfqe9dKN7tCx1bVeIbNbCosNAhpXOUfDyeqZs8pHMN9wfxLf7uAPHdU7kRw==
   dependencies:
     "@iarna/toml" "^2.2.5"
     chalk "^4.1.0"
     decamelize "^4.0.0"
     fs-extra "^9.0.1"
     glob "^7"
+    ini "^2.0.0"
     inquirer "^7.3.3"
     semver "^7.3.2"
     xmlbuilder2 "^2.4.0"
