@@ -3,13 +3,12 @@ import * as cognito from '@aws-cdk/aws-cognito';
 import * as db from '@aws-cdk/aws-dynamodb';
 import * as iam from '@aws-cdk/aws-iam';
 import * as core from '@aws-cdk/core';
-import { CustomStack } from 'aws-cdk-staging-pipeline/lib/custom-stack';
 
 export interface AppSyncStackProps extends core.StackProps {
   readonly stage: string;
 }
 
-export class AppSyncStack extends CustomStack {
+export class AppSyncStack extends core.Stack {
   constructor(scope: core.Construct, id: string, props: AppSyncStackProps) {
     super(scope, id, props);
 
@@ -132,11 +131,10 @@ export class AppSyncStack extends CustomStack {
     });
 
     // Outputs
-    const graphql = new core.CfnOutput(this, 'appsyncGraphQLEndpointOutput', {
+    new core.CfnOutput(this, 'appsyncGraphQLEndpointOutput', {
       description: 'GraphQL Endpoint',
       value: graphQlApi.graphqlUrl,
     });
-    this.cfnOutputs.appsyncGraphQLEndpointOutput = graphql;
 
     new core.CfnOutput(this, 'awsUserPoolId', {
       description: 'userPoolID value for amplify exports',

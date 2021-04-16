@@ -1493,11 +1493,6 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-aws-cdk-staging-pipeline@^1.97.0:
-  version "1.97.0"
-  resolved "https://registry.yarnpkg.com/aws-cdk-staging-pipeline/-/aws-cdk-staging-pipeline-1.97.0.tgz#1b56cc372f57b0d9d6503f4bb74b97524646f201"
-  integrity sha512-U9ZJG9nzv2EpOjUTnbxktFz30nJT1ph88cA6yRpkHpEOWzUY0DKXxKOLv9uH+m/aIbBl2INQzetqbrObVipr1A==
-
 aws-cdk@^1.93.0:
   version "1.93.0"
   resolved "https://registry.yarnpkg.com/aws-cdk/-/aws-cdk-1.93.0.tgz#6b2a644b76d35cc5eadaab5cfe5583cac02e34b3"
